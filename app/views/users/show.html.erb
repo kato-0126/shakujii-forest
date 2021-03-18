@@ -1,0 +1,15 @@
+<div class="contents row">
+  <p>＜趣味＞</p>
+  <p><%= @user.hobby%></p>
+   <p>＜自己紹介＞</p> 
+   <p> <%= @user.introduction%> </p> 
+
+
+  <p><%= @user.name %>さんの投稿一覧</p>
+  <% @contents.each do |content| %>
+    <div class="content_post" style="background-image: url(<%= content.image %>);">
+      <p><%= content.title %></p>
+      <span class="name"><%= content.user %></span>
+    </div>
+  <% end %>
+</div>
