@@ -11,7 +11,14 @@
         <%= f.label :email %><br />
         <%= f.email_field :email %>
       </div>
-
+      <div class="field">
+        <%= f.label :hobby %><br />
+        <%= f.text_field :hobby %>
+      </div>
+      <div class="field">
+        <%= f.label :一言自己紹介 %><br />
+        <%= f.text_field :introduction %>
+      </div>
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
@@ -24,14 +31,7 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
-      <div class="field">
-        <%= f.label :hobby %><br />
-        <%= f.text_area :hobby %>
-      </div>
-        <div class="field">
-        <%= f.label :introduction %><br />
-        <%= f.text_area :introduction %>
-      </div>
+
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
