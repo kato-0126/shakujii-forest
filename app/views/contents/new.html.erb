@@ -1,0 +1,14 @@
+<div class="contents row">
+  <div class="container">
+    <h3>投稿する</h3>
+      <%= form_with model: @content, local: true do |form| %>
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <div class= "image-form"><%= form.file_field :image, id:"content-image" %></div>
+        <%= form.text_field :title, placeholder: "写真のタイトルを記入してください" %>
+        <%= form.text_area :explain, placeholder: "説明文" %>
+        <%= form.submit "SEND" %>
+      <%end%>
+    </div>
+</div>
