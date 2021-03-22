@@ -14,6 +14,7 @@ class ContentsController < ApplicationController
         render :new
       end
     end
+    
     private
     def content_params
       params.require(:content).permit(:image,:title,:explain).merge(user_id:current_user.id)

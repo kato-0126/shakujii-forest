@@ -12,7 +12,7 @@
   <% @contents.each do |content| %>
     <div class="content_post" style="background-image: url(<%= content.image %>);">
       <p><%= content.title %></p>
-      <span class="name"><%= content.user %></span>
+      <span class="name"><%= content.user.name %></span>
     </div>
   <% end %>
 </div>

@@ -12,3 +12,31 @@
       </div>
     </div>
 </div>
+
+  <div class='item-contents'>
+    <h1 class='subtitle'>投稿写真一覧</h1>
+    <ul class='item-lists'>
+
+      <% @contents.each do |content|%>
+      <li class='list'>
+        <%= link_to contents_path(content.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag content.image, class: "item-img" if content.image.attached? %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= content.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= content.user.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
