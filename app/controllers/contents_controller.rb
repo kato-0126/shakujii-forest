@@ -1,23 +1,59 @@
 class ContentsController < ApplicationController
+  before_action :set_content,only:[:show,:edit,:update,:destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
+
     def index
-    @contents = Content.all.order('created_at DESC')
+      @contents = Content.all.order('created_at DESC')
     end
     def new
       @content = Content.new
     end
     def create
-      @content = Content.new(content_params)
-      if @content.save
+      if @content = Content.create(content_params)
         redirect_to root_path
       else
         @content = Content.new(content_params)
         render :new
       end
     end
-    
+
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+      if @content.update(content_params)
+        redirect_to root_path
+      else
+        set_content
+        render :edit
+      end
+    end
+
+    def destroy
+      if @content.destroy
+        redirect_to root_path
+      else
+        render :show
+      end
+    end
+
+
     private
     def content_params
       params.require(:content).permit(:image,:title,:explain).merge(user_id:current_user.id)
     end
+    def set_content
+      @content = Content.find(params[:id])
+    end
 
+    def move_to_index
+      content = Content.find(params[:id])
+      if content.user_id != current_user.id
+        redirect_to root_path
+      end
+    end
 end

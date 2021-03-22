@@ -19,7 +19,7 @@
 
       <% @contents.each do |content|%>
       <li class='list'>
-        <%= link_to contents_path(content.id) do %>
+        <%= link_to content_path(content.id) do %>
         <div class='item-img-content'>
           <%= image_tag content.image, class: "item-img" if content.image.attached? %>
         </div>
