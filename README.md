@@ -57,9 +57,7 @@ User削除機能
 ER図（ER.dio）
 https://user-images.githubusercontent.com/78475933/112132674-374a9e80-8c0e-11eb-87fd-8dacd1879c67.png
 # ローカルでの動作方法
-アプリケーションのディレクトリに移動
-↓
-localサーバーを起動して確認できます。
+アプリケーションのディレクトリに移動→localサーバーを起動して確認できます。
 
 ※Mac iOS Big Sur, Ruby 6.0.0を使用して作成。
 ※使用言語：Ruby、HTML、CSS
