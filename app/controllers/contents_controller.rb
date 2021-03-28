@@ -10,10 +10,11 @@ class ContentsController < ApplicationController
       @content = Content.new
     end
     def create
-      if @content = Content.create(content_params)
+       @content = Content.new(content_params)
+       if @content.valid?
+        @content.save
         redirect_to root_path
       else
-        @content = Content.new(content_params)
         render :new
       end
     end
