@@ -1,0 +1,9 @@
+ja:
+
+  time:
+
+    formats:
+
+      default: "%Y/%m/%d %H:%M:%S"  #何も指定しなければ、デフォルト読み込み
+
+      date: "%Y/%m/%d %H:%M"            #カスタム表示形式

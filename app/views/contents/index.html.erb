@@ -1,45 +1,54 @@
-<div class='main'>
-    <div class='main-visual'>
-      <h2 class='service-title'>
-        石神井の森図鑑
-      </h2>
-      <p class='service-explain'>
-        石神井公園で撮った写真、
-      </p>
-      <p class='service-explain'>
-        見せてもらってもいいですか？
-      </p>
+<!DOCTYPE html>
+
+<body>
+  <div class="top-wrapper">
+    <div class="container">
+      <div class="copy-text">
+        <h1>石神井の森図鑑</h1>
+        <p>
+          あなたのとっておきの写真、見せてくれませんか？
+        </p>
+    </div>
+    </div>
+  </div>
+  <div class="about-wrapper">
+    <div class="container">
+        <div class= "about">
+          <%= link_to "About",contents_about_path, method: :get%>
+          <br><span>（このサイトについて）</span>
+        </div>
       </div>
     </div>
-</div>
-
-  <div class='item-contents'>
-    <h1 class='subtitle'>投稿写真一覧</h1>
-    <ul class='item-lists'>
-
-      <% @contents.each do |content|%>
-      <li class='list'>
-        <%= link_to content_path(content.id) do %>
-        <div class='item-img-content'>
-          <%= image_tag content.image, class: "item-img" if content.image.attached? %>
-        </div>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= content.title %>
-          </h3>
-          <div class='item-price'>
-            <span><%= content.user.name %></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
   </div>
+  <div class="contents-wrapper">
+    <h3 class="contents-heading">投稿写真一覧</h3>
+      <div class="container">
+        <ul class="contents">
 
-
-  
+          <% @contents.each do |content|%>
+          <li class="content" >
+            <%= link_to content_path(content.id) do %>
+              <div class="image-content">
+               <%= image_tag content.image, class: "image" if content.image.attached? %>
+              </div>
+              <div class="content-info">
+                <div class="left">
+                  <div class="title"><%= content.title %></div>
+                </div>
+                <div class="right">
+                  <div class="fav">
+                    <img class="star" src="star.png" alt="★">
+                    00
+                  </div>
+                  <div class="name"><%= content.user.name %></div>
+                  <div class="date"><%= l content.created_at,format: :date %></div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,15 +1,17 @@
 <div class="contents row">
   <div class="container">
-    <h3>投稿する</h3>
-      <%= form_with model: @content, local: true do |form| %>
-      <%= render 'layouts/error_messages', model: form.object %>
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <div class= "image-form"><%= form.file_field :image, id:"content-image" %></div>
-        <%= form.text_field :title, placeholder: "写真のタイトルを記入してください" %>
-        <%= form.text_area :explain, placeholder: "説明文" %>
-        <%= form.submit "SEND" %>
-      <%end%>
+  <div class="form-container">
+      <h2>新規投稿</h2>
+        <%= form_with model: @content, local: true do |form| %>
+        <%= render 'layouts/error_messages', model: form.object %>
+          <p>
+            クリックしてファイルをアップロード
+          </p>
+          <div class= "image-form"><%= form.file_field :image, id:"content-image" %></div>
+          <%= form.text_field :title, placeholder: "写真のタイトルを記入してください" %>
+          <%= form.text_area :explain, placeholder: "説明文" %>
+          <%= form.submit "投稿する" %>
+        <%end%>
+      </div>
     </div>
 </div>

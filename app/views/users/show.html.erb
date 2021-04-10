@@ -1,18 +1,40 @@
-<div class="contents row">
-  <p>＜趣味＞</p>
-  <p><%= @user.hobby%></p> 
-  <p>＜自己紹介＞</p> 
-  <p> <%= @user.introduction%> </p>  
-  <p>
-  <%if user_signed_in? && @user.id == current_user.id%>
-  <%= link_to "ユーザー情報の編集", edit_user_path(@user.id), method: :get, class: "item-red-btn" %>
-  <% end %>
-  </p>
-  <p><%= @user.name %>さんの投稿一覧</p>
-  <% @contents.each do |content| %>
-    <div class="content_post" style="background-image: url(<%= content.image %>);">
-      <p><%= content.title %></p>
-      <span class="name"><%= content.user.name %></span>
-    </div>
-  <% end %>
+<div class="user-show">
+  <div class="container">
+      <%if user_signed_in? && @user.id == current_user.id%>
+      <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), method: :get, class: "btn-edit" %>
+      <% end %>
+      <p>＜ユーザーネーム＞</p>
+      <p><%= @user.name%></p> 
+      <p>＜趣味＞</p>
+      <p><%= @user.hobby%></p> 
+      <p>＜自己紹介＞</p> 
+      <p> <%= @user.introduction%> </p>  
+      <p>
+      </p>
+      <p><%= @user.name %>さんの投稿一覧</p>
+      <ul class="contents">
+        <% @contents.each do |content|%>
+          <li class="content" >
+            <%= link_to content_path(content.id) do %>
+              <div class="image-content">
+               <%= image_tag content.image, class: "image" if content.image.attached? %>
+              </div>
+              <div class="content-info">
+                <div class="left">
+                  <div class="title"><%= content.title %></div>
+                </div>
+                <div class="right">
+                  <div class="fav">
+                    <img class="star" src="star.png" alt="★">
+                    00
+                  </div>
+                  <div class="name"><%= content.user.name %></div>
+                  <div class="date"><%= l content.created_at,format: :date %></div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+          <% end %>
+      </ul>
+  </div>
 </div>
